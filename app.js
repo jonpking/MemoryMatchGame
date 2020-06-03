@@ -1,6 +1,6 @@
-// generate grid of cards instead of using divs in html
 // image array
 // apply images to cards in pairs
+// get images from api
 // shuffle images each time game is played
 // compare clicked images
 // images start as "face down"
@@ -16,6 +16,7 @@ const cardImageArr = []
 let clickedImage1
 let clickedImage2
 let divNumber = 16
+let searchTerm = "bacon"
 
 function generateColumns(divNumber) {
     const gameArea = document.getElementById("gameArea");
@@ -26,4 +27,18 @@ function generateColumns(divNumber) {
     }
 }
 
+function getImages() {
+    $.ajax({
+        url: "//api.giphy.com/v1/gifs/search?q="
+            + searchTerm
+            + "&limit="
+            + divNumber / 2
+            + "&api_key=W5rOVNC5OWIuMkDJ3o5vDoDBxFuqcCv7",
+        success: function (res) {
+            console.log(res);
+        }
+    });
+}
+
 generateColumns(divNumber);
+getImages();
