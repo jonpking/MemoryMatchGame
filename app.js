@@ -53,17 +53,17 @@ function getImages() {
 }
 
 function addImagesToArray(response) {
-    console.log(response);
     for (i = 0; i < divNumber / 2; i++) {
         cardImageArr.push(response.data[i].images.looping.mp4);
+        cardImageArr.push(response.data[i].images.looping.mp4);
     }
-    console.log(cardImageArr);
     displayImages();
 }
 
 function displayImages() {
+    shuffleImages(cardImageArr);
     const cards = document.getElementsByClassName("card");
-    for (i = 0; i < divNumber / 2; i++) {
+    for (i = 0; i < divNumber; i++) {
         const cardImage = document.createElement("video");
         const cardImageSource = document.createElement("source");
         cardImage.setAttribute("autoplay", "");
@@ -88,7 +88,13 @@ function displayImages() {
                 break;
         }
     }
-    console.log(cards);
+}
+
+function shuffleImages(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
 }
 
 generateColumns(divNumber);
