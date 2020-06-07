@@ -1,7 +1,3 @@
-// image array
-// apply images to cards in pairs
-// get images from api
-// shuffle images each time game is played
 // compare clicked images
 // images start as "face down"
 // when clicked images become "face up"
@@ -10,7 +6,6 @@
 // game over screen when all cards have been matched
 // scoring?
 // difficulty adjustments?
-
 
 const cardImageArr = []
 let clickedImage1
