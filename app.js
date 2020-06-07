@@ -27,10 +27,13 @@ function generateColumns(divNumber) {
         switch (difficulty) {
             case "easy":
                 cardDiv.classList.add("easy");
+                break;
             case "medium":
                 cardDiv.classList.add("medium");
+                break;
             case "hard":
                 cardDiv.classList.add("hard");
+                break;
         }
         gameArea.appendChild(cardDiv);
     }
@@ -63,8 +66,20 @@ function displayImages() {
     const cardImage = document.createElement("video");
     const cardImageSource = document.createElement("source");
     cardImageSource.src = cardImageArr[0];
-    cardImage.width = "100";
-    cardImage.height = "100";
+    switch (difficulty) {
+        case "easy":
+            cardImage.width = "130";
+            cardImage.height = "130";
+            break;
+        case "medium":
+            cardImage.width = "90";
+            cardImage.height = "90";
+            break;
+        case "hard":
+            cardImage.width = "75";
+            cardImage.height = "75";
+            break;
+    }
     cardImage.setAttribute("autoplay", "");
     cardImage.append(cardImageSource);
     card[0].append(cardImage);
