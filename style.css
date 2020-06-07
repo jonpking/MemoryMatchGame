@@ -17,6 +17,9 @@ h1 {
 
 .card {
     border: solid black 1px;
+}
+
+.easy {
     height: 130px;
     width: 130px;
 }
