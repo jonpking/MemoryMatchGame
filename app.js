@@ -17,13 +17,22 @@ let clickedImage1
 let clickedImage2
 let divNumber = 16
 let searchTerm = "bacon"
+let difficulty = "easy"
 
 function generateColumns(divNumber) {
     const gameArea = document.getElementById("gameArea");
     for (i = 0; i < divNumber; i++) {
         const cardDiv = document.createElement("div");
         cardDiv.className = "card";
-        gameArea.appendChild(cardDiv)
+        switch (difficulty) {
+            case "easy":
+                cardDiv.classList.add("easy");
+            case "medium":
+                cardDiv.classList.add("medium");
+            case "hard":
+                cardDiv.classList.add("hard");
+        }
+        gameArea.appendChild(cardDiv);
     }
 }
 
@@ -35,7 +44,7 @@ function getImages() {
             + divNumber / 2
             + "&api_key=W5rOVNC5OWIuMkDJ3o5vDoDBxFuqcCv7",
         success: function (res) {
-            addImagesToArray(res)
+            addImagesToArray(res);
         }
     });
 }
@@ -43,9 +52,23 @@ function getImages() {
 function addImagesToArray(response) {
     console.log(response);
     for (i = 0; i < divNumber / 2; i++) {
-        cardImageArr.push(response.data[i].images.looping.mp4)
+        cardImageArr.push(response.data[i].images.looping.mp4);
     }
-    console.log(cardImageArr)
+    console.log(cardImageArr);
+    displayImages();
+}
+
+function displayImages() {
+    const card = document.getElementsByClassName("card");
+    const cardImage = document.createElement("video");
+    const cardImageSource = document.createElement("source");
+    cardImageSource.src = cardImageArr[0];
+    cardImage.width = "100";
+    cardImage.height = "100";
+    cardImage.setAttribute("autoplay", "");
+    cardImage.append(cardImageSource);
+    card[0].append(cardImage);
+    console.log(card);
 }
 
 generateColumns(divNumber);
