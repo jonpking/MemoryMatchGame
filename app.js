@@ -62,28 +62,33 @@ function addImagesToArray(response) {
 }
 
 function displayImages() {
-    const card = document.getElementsByClassName("card");
-    const cardImage = document.createElement("video");
-    const cardImageSource = document.createElement("source");
-    cardImageSource.src = cardImageArr[0];
-    switch (difficulty) {
-        case "easy":
-            cardImage.width = "130";
-            cardImage.height = "130";
-            break;
-        case "medium":
-            cardImage.width = "90";
-            cardImage.height = "90";
-            break;
-        case "hard":
-            cardImage.width = "75";
-            cardImage.height = "75";
-            break;
+    const cards = document.getElementsByClassName("card");
+    for (i = 0; i < divNumber / 2; i++) {
+        const cardImage = document.createElement("video");
+        const cardImageSource = document.createElement("source");
+        cardImage.setAttribute("autoplay", "");
+        cardImage.setAttribute("playsinline", "");
+        cardImage.setAttribute("muted", "");
+        cardImage.setAttribute("loop", "");
+        cardImage.append(cardImageSource);
+        cards[i].append(cardImage);
+        cardImageSource.src = cardImageArr[i];
+        switch (difficulty) {
+            case "easy":
+                cardImage.width = "130";
+                cardImage.height = "130";
+                break;
+            case "medium":
+                cardImage.width = "90";
+                cardImage.height = "90";
+                break;
+            case "hard":
+                cardImage.width = "75";
+                cardImage.height = "75";
+                break;
+        }
     }
-    cardImage.setAttribute("autoplay", "");
-    cardImage.append(cardImageSource);
-    card[0].append(cardImage);
-    console.log(card);
+    console.log(cards);
 }
 
 generateColumns(divNumber);
