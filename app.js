@@ -35,9 +35,17 @@ function getImages() {
             + divNumber / 2
             + "&api_key=W5rOVNC5OWIuMkDJ3o5vDoDBxFuqcCv7",
         success: function (res) {
-            console.log(res);
+            addImagesToArray(res)
         }
     });
+}
+
+function addImagesToArray(response) {
+    console.log(response);
+    for (i = 0; i < divNumber / 2; i++) {
+        cardImageArr.push(response.data[i].images.looping.mp4)
+    }
+    console.log(cardImageArr)
 }
 
 generateColumns(divNumber);
