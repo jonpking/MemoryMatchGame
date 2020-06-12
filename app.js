@@ -88,12 +88,17 @@ function shuffleImages(array) {
 }
 
 function compareClickedImages() {
-
+    if (clickedImage1 !== "" && clickedImage2 !== "") {
+        if (clickedImage1 === clickedImage2) {
+            alert("CORRECT MATCH");
+        }
+        else {
+            alert("WRONG MATCH");
+        }
+    }
 }
 
-function storeClickedImages(event) {
-    console.log(event)
-    console.log("test", clickedImage1)
+function storeClickedImages() {
     if (clickedImage1 === "") {
         clickedImage1 = event.target.src;
         console.log("image1", clickedImage1);
@@ -102,8 +107,8 @@ function storeClickedImages(event) {
         clickedImage2 = event.target.src;
         console.log("image2", clickedImage2);
     }
+    compareClickedImages();
 }
 
 generateColumns(divNumber);
 getImages();
-compareClickedImages();
