@@ -1,4 +1,3 @@
-// compare clicked images
 // images start as "face down"
 // when clicked images become "face up"
 // hide cards when correctly matched
