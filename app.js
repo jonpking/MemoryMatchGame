@@ -1,6 +1,5 @@
 // images start as "face down"
 // when clicked images become "face up"
-// hide cards when correctly matched
 // flip "face down" again if incorrectly matched
 // game over screen when all cards have been matched
 // scoring?
@@ -87,16 +86,19 @@ function shuffleImages(array) {
 }
 
 function compareClickedImages() {
+    const selectedImages = document.querySelectorAll(".selected");
     if (clickedImage1 !== "" && clickedImage2 !== "") {
         if (clickedImage1 === clickedImage2) {
             alert("CORRECT MATCH");
+            for (i = 0; i < selectedImages.length; i++) {
+                selectedImages[i].style.display = "none";
+            }
         }
         else {
             alert("WRONG MATCH");
         }
         clickedImage1 = ""
         clickedImage2 = ""
-        const selectedImages = document.querySelectorAll(".selected");
         for (i = 0; i < selectedImages.length; i++) {
             selectedImages[i].classList.remove("selected");
         }
