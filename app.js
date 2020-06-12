@@ -95,10 +95,17 @@ function compareClickedImages() {
         else {
             alert("WRONG MATCH");
         }
+        clickedImage1 = ""
+        clickedImage2 = ""
+        const selectedImages = document.querySelectorAll(".selected");
+        for (i = 0; i < selectedImages.length; i++) {
+            selectedImages[i].classList.remove("selected");
+        }
     }
 }
 
 function storeClickedImages() {
+    this.classList.add("selected");
     if (clickedImage1 === "") {
         clickedImage1 = event.target.src;
         console.log("image1", clickedImage1);
@@ -107,7 +114,7 @@ function storeClickedImages() {
         clickedImage2 = event.target.src;
         console.log("image2", clickedImage2);
     }
-    compareClickedImages();
+    setTimeout(function () { compareClickedImages() }, 1000);
 }
 
 generateColumns(divNumber);
