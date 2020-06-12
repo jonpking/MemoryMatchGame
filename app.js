@@ -49,8 +49,8 @@ function getImages() {
 
 function addImagesToArray(response) {
     for (i = 0; i < divNumber / 2; i++) {
-        cardImageArr.push(response.data[i].images.looping.mp4);
-        cardImageArr.push(response.data[i].images.looping.mp4);
+        cardImageArr.push(response.data[i].images.original.url);
+        cardImageArr.push(response.data[i].images.original.url);
     }
     displayImages();
 }
@@ -59,15 +59,10 @@ function displayImages() {
     shuffleImages(cardImageArr);
     const cards = document.getElementsByClassName("card");
     for (i = 0; i < divNumber; i++) {
-        const cardImage = document.createElement("video");
-        const cardImageSource = document.createElement("source");
-        cardImage.setAttribute("autoplay", "");
-        cardImage.setAttribute("playsinline", "");
-        cardImage.setAttribute("muted", "");
-        cardImage.setAttribute("loop", "");
-        cardImage.append(cardImageSource);
+        const cardImage = document.createElement("img");
+        cardImage.addEventListener("click", storeClickedImages);
+        cardImage.setAttribute("src", cardImageArr[i]);
         cards[i].append(cardImage);
-        cardImageSource.src = cardImageArr[i];
         switch (difficulty) {
             case "easy":
                 cardImage.width = "130";
@@ -93,20 +88,19 @@ function shuffleImages(array) {
 }
 
 function compareClickedImages() {
-    cards = document.getElementsByClassName("card")
-    console.log(cards);
-    for (let i = 0; i < cards.length; i++) {
-        cards[i].addEventListener("click", function storeClickedImages() {
-            console.log("test", clickedImage1)
-            if (clickedImage1 === "") {
-                clickedImage1 = this.firstChild.firstChild.src;
-                console.log("image1", clickedImage1);
-            }
-            else if (clickedImage2 === "") {
-                clickedImage2 = this.firstChild.firstChild.src;
-                console.log("image2", clickedImage2);
-            }
-        });
+
+}
+
+function storeClickedImages(event) {
+    console.log(event)
+    console.log("test", clickedImage1)
+    if (clickedImage1 === "") {
+        clickedImage1 = event.target.src;
+        console.log("image1", clickedImage1);
+    }
+    else if (clickedImage2 === "") {
+        clickedImage2 = event.target.src;
+        console.log("image2", clickedImage2);
     }
 }
 
