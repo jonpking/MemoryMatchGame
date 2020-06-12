@@ -109,11 +109,9 @@ function storeClickedImages() {
     this.classList.add("selected");
     if (clickedImage1 === "") {
         clickedImage1 = event.target.src;
-        console.log("image1", clickedImage1);
     }
     else if (clickedImage2 === "") {
         clickedImage2 = event.target.src;
-        console.log("image2", clickedImage2);
     }
     setTimeout(function () { compareClickedImages() }, 1000);
 }
