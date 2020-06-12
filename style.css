@@ -30,3 +30,7 @@ h1 {
     height: 100%;
     overflow: hidden;
 }
+
+.selected {
+    border: solid #f1da32 3px;
+}
