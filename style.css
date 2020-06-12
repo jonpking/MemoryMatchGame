@@ -27,3 +27,7 @@ h1 {
 .selected {
     border: solid #f1da32 3px;
 }
+
+.hidden {
+    display: none;
+}
