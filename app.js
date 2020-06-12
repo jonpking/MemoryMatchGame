@@ -8,8 +8,8 @@
 // difficulty adjustments?
 
 const cardImageArr = []
-let clickedImage1
-let clickedImage2
+let clickedImage1 = ""
+let clickedImage2 = ""
 let divNumber = 16
 let searchTerm = "bacon"
 let difficulty = "easy"
@@ -92,5 +92,24 @@ function shuffleImages(array) {
     }
 }
 
+function compareClickedImages() {
+    cards = document.getElementsByClassName("card")
+    console.log(cards);
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].addEventListener("click", function storeClickedImages() {
+            console.log("test", clickedImage1)
+            if (clickedImage1 === "") {
+                clickedImage1 = this.firstChild.firstChild.src;
+                console.log("image1", clickedImage1);
+            }
+            else if (clickedImage2 === "") {
+                clickedImage2 = this.firstChild.firstChild.src;
+                console.log("image2", clickedImage2);
+            }
+        });
+    }
+}
+
 generateColumns(divNumber);
 getImages();
+compareClickedImages();
