@@ -1,2 +1,2 @@
 # MemoryMatchGame
-a simple match 2 memory game
+a simple card matching memory game
