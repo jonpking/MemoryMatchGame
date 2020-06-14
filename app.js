@@ -15,20 +15,32 @@ let difficulty = "easy"
 function generateColumns(divNumber) {
     const gameArea = document.getElementById("gameArea");
     for (i = 0; i < divNumber; i++) {
-        const cardDiv = document.createElement("div");
-        cardDiv.className = "card";
+        const cardOuterDiv = document.createElement("div");
+        cardOuterDiv.className = "card-outer";
+        const cardInnerDiv = document.createElement("div");
+        cardInnerDiv.className = "card-inner";
+        const cardFrontDiv = document.createElement("div");
+        cardFrontDiv.className = "card-front";
+        const cardBackDiv = document.createElement("div");
+        cardBackDiv.className = "card-back";
+        const cardBackImg = document.createElement("img");
+        cardBackImg.setAttribute("src", "images/card-back.jpg")
         switch (difficulty) {
             case "easy":
-                cardDiv.classList.add("easy");
+                cardOuterDiv.classList.add("easy");
                 break;
             case "medium":
-                cardDiv.classList.add("medium");
+                cardOuterDiv.classList.add("medium");
                 break;
             case "hard":
-                cardDiv.classList.add("hard");
+                cardOuterDiv.classList.add("hard");
                 break;
         }
-        gameArea.appendChild(cardDiv);
+        cardBackDiv.appendChild(cardBackImg);
+        cardInnerDiv.appendChild(cardBackDiv);
+        cardInnerDiv.appendChild(cardFrontDiv);
+        cardOuterDiv.appendChild(cardInnerDiv);
+        gameArea.appendChild(cardOuterDiv);
     }
 }
 
@@ -55,7 +67,7 @@ function addImagesToArray(response) {
 
 function displayImages() {
     shuffleImages(cardImageArr);
-    const cards = document.getElementsByClassName("card");
+    const cards = document.getElementsByClassName("card-front");
     for (i = 0; i < divNumber; i++) {
         const cardImage = document.createElement("img");
         cardImage.addEventListener("click", storeClickedImages);
