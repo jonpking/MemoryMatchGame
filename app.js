@@ -116,7 +116,7 @@ function storeClickedImages() {
 function correctMatch(selectedImages) {
     alert("CORRECT MATCH");
     for (i = 0; i < selectedImages.length; i++) {
-        selectedImages[i].classList.add("hidden");
+        selectedImages[i].classList.add("matched");
     }
 }
 
