@@ -28,12 +28,18 @@ function generateColumns(divNumber) {
         switch (difficulty) {
             case "easy":
                 cardOuterDiv.classList.add("easy");
+                cardBackImg.width = "130"
+                cardBackImg.height = "130"
                 break;
             case "medium":
                 cardOuterDiv.classList.add("medium");
+                cardBackImg.width = "90"
+                cardBackImg.height = "90"
                 break;
             case "hard":
                 cardOuterDiv.classList.add("hard");
+                cardBackImg.width = "75"
+                cardBackImg.height = "75"
                 break;
         }
         cardBackDiv.appendChild(cardBackImg);
