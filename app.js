@@ -145,27 +145,37 @@ function compareClickedImages() {
 }
 
 function storeClickedImages() {
-    this.children[0].classList.add("flip");
     this.classList.add("flip");
     this.classList.add("selected");
     if (clickedImage1 === "") {
         clickedImage1 = this.children[0].children[1].children[0].src;
+        this.removeEventListener("click", storeClickedImages);
     }
     else if (clickedImage2 === "") {
         clickedImage2 = this.children[0].children[1].children[0].src;
+        const cards = document.querySelectorAll(".card-outer");
+        for (let i =0; i < cards.length; i++) {
+            cards[i].removeEventListener("click", storeClickedImages)
+        }
+        setTimeout(function () {
+            const cards = document.querySelectorAll(".card-outer");
+            for (let i =0; i < cards.length; i++) {
+                cards[i].addEventListener("click", storeClickedImages)
+            }
+            compareClickedImages()
+        }, 2000);
     }
-    setTimeout(function () { compareClickedImages() }, 1000);
+
 }
 
 function correctMatch(selectedImages) {
-    alert("CORRECT MATCH");
     for (i = 0; i < selectedImages.length; i++) {
         selectedImages[i].classList.add("matched");
     }
 }
 
 function wrongMatch() {
-    alert("WRONG MATCH");
+    // subtract points?
 }
 
 generateColumns(divNumber);
