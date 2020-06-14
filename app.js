@@ -1,6 +1,26 @@
-// images start as "face down"
-// when clicked images become "face up"
-// flip "face down" again if incorrectly matched
+// todo:
+
+//     -page layout
+//         /-basic
+//         -extras
+//     -css
+//         /-basic
+//         -extras
+//     /-create memory cards
+//     /-create pictures/objects/etc to match
+//         /-pull from api?
+//     -difficulty levels?
+//         -change grid size?
+//         -change match number(match 2, 3, etc)?
+//     /-make cards flip/fade/animate/etc when clicked
+//         /-check if cards match after two are flipped
+//             /-remove if yes
+//             /-flip back over if no
+//     -game over screen when all cards are matched
+//     -scoring system?
+
+
+
 // game over screen when all cards have been matched
 // scoring?
 // difficulty adjustments?
@@ -45,6 +65,7 @@ function generateColumns(divNumber) {
         cardBackDiv.appendChild(cardBackImg);
         cardInnerDiv.appendChild(cardBackDiv);
         cardInnerDiv.appendChild(cardFrontDiv);
+        cardOuterDiv.addEventListener("click", storeClickedImages);
         cardOuterDiv.appendChild(cardInnerDiv);
         gameArea.appendChild(cardOuterDiv);
     }
@@ -76,7 +97,6 @@ function displayImages() {
     const cards = document.getElementsByClassName("card-front");
     for (i = 0; i < divNumber; i++) {
         const cardImage = document.createElement("img");
-        cardImage.addEventListener("click", storeClickedImages);
         cardImage.setAttribute("src", cardImageArr[i]);
         cards[i].append(cardImage);
         switch (difficulty) {
@@ -105,6 +125,7 @@ function shuffleImages(array) {
 
 function compareClickedImages() {
     const selectedImages = document.querySelectorAll(".selected");
+    const flipImages = document.querySelectorAll(".flip");
     if (clickedImage1 !== "" && clickedImage2 !== "") {
         if (clickedImage1 === clickedImage2) {
             correctMatch(selectedImages)
@@ -117,16 +138,21 @@ function compareClickedImages() {
         for (i = 0; i < selectedImages.length; i++) {
             selectedImages[i].classList.remove("selected");
         }
+        for (i = 0; i < flipImages.length; i++) {
+            flipImages[i].classList.remove("flip");
+        }
     }
 }
 
 function storeClickedImages() {
+    this.children[0].classList.add("flip");
+    this.classList.add("flip");
     this.classList.add("selected");
     if (clickedImage1 === "") {
-        clickedImage1 = event.target.src;
+        clickedImage1 = this.children[0].children[1].children[0].src;
     }
     else if (clickedImage2 === "") {
-        clickedImage2 = event.target.src;
+        clickedImage2 = this.children[0].children[1].children[0].src;
     }
     setTimeout(function () { compareClickedImages() }, 1000);
 }

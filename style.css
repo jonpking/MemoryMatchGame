@@ -20,16 +20,12 @@ h1 {
     width: 130px;
 }
 
-.selected {
-    border: solid #f1da32 3px;
-}
-
 .matched {
     display: none;
 }
 
 .card-outer {
-    border: solid black 1px;
+    border: solid black 3px;
     perspective: 1000px;
 }
 
@@ -45,7 +41,7 @@ h1 {
   }
   
   /* Do an horizontal flip when you move the mouse over the flip box container */
-  .card-outer:hover .card-inner {
+  .flip {
     transform: rotateY(180deg);
   }
   
