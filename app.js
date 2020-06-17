@@ -17,10 +17,9 @@
 //             /-remove if yes
 //             /-flip back over if no
 //     /-game over screen when all cards are matched
-//     -scoring system?
+//     /-scoring system?
 
 //refactor reset function
-// scoring?
 // difficulty adjustments?
 
 const cardImageArr = []
@@ -30,6 +29,7 @@ let divNumber = 16
 let correctMatchCount = 0
 let searchTerm = "bacon"
 let difficulty = "easy"
+let score = 0
 
 function generateColumns(divNumber) {
     const gameArea = document.getElementById("gameArea");
@@ -174,11 +174,14 @@ function correctMatch(selectedImages) {
         console.log(correctMatchCount);
         selectedImages[i].classList.add("matched");
     }
+    score += 10;
+    updateScore();
     gameOver();
 }
 
 function wrongMatch() {
-    // subtract points?
+    score -= 1;
+    updateScore();
 }
 
 function gameOver() {
@@ -189,6 +192,10 @@ function gameOver() {
 
 function gameReset() {
     window.location.reload(true);
+}
+
+function updateScore() {
+    document.querySelector("#score").textContent = score;
 }
 
 generateColumns(divNumber);
