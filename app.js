@@ -16,12 +16,10 @@
 //         /-check if cards match after two are flipped
 //             /-remove if yes
 //             /-flip back over if no
-//     -game over screen when all cards are matched
+//     /-game over screen when all cards are matched
 //     -scoring system?
 
-
-
-// game over screen when all cards have been matched
+//refactor reset function
 // scoring?
 // difficulty adjustments?
 
@@ -185,13 +183,12 @@ function wrongMatch() {
 
 function gameOver() {
     if (correctMatchCount === divNumber) {
-        alert("YOU WIN!!!")
+        setTimeout(function () { gameReset(); }, 2000);
     }
-    gameReset();
 }
 
 function gameReset() {
-
+    window.location.reload(true);
 }
 
 generateColumns(divNumber);
