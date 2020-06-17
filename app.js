@@ -29,6 +29,7 @@ const cardImageArr = []
 let clickedImage1 = ""
 let clickedImage2 = ""
 let divNumber = 16
+let correctMatchCount = 0
 let searchTerm = "bacon"
 let difficulty = "easy"
 
@@ -123,6 +124,31 @@ function shuffleImages(array) {
     }
 }
 
+function storeClickedImages() {
+    this.classList.add("flip");
+    this.classList.add("selected");
+    if (clickedImage1 === "") {
+        clickedImage1 = this.children[0].children[1].children[0].src;
+        this.removeEventListener("click", storeClickedImages);
+    }
+    else if (clickedImage2 === "") {
+        clickedImage2 = this.children[0].children[1].children[0].src;
+        const cards = document.querySelectorAll(".card-outer");
+        for (let i = 0; i < cards.length; i++) {
+            cards[i].removeEventListener("click", storeClickedImages)
+        }
+        setTimeout(function () {
+            const cards = document.querySelectorAll(".card-outer");
+            for (let i = 0; i < cards.length; i++) {
+                cards[i].addEventListener("click", storeClickedImages)
+            }
+            console.log(correctMatchCount);
+            compareClickedImages()
+        }, 2000);
+    }
+
+}
+
 function compareClickedImages() {
     const selectedImages = document.querySelectorAll(".selected");
     const flipImages = document.querySelectorAll(".flip");
@@ -144,38 +170,28 @@ function compareClickedImages() {
     }
 }
 
-function storeClickedImages() {
-    this.classList.add("flip");
-    this.classList.add("selected");
-    if (clickedImage1 === "") {
-        clickedImage1 = this.children[0].children[1].children[0].src;
-        this.removeEventListener("click", storeClickedImages);
-    }
-    else if (clickedImage2 === "") {
-        clickedImage2 = this.children[0].children[1].children[0].src;
-        const cards = document.querySelectorAll(".card-outer");
-        for (let i =0; i < cards.length; i++) {
-            cards[i].removeEventListener("click", storeClickedImages)
-        }
-        setTimeout(function () {
-            const cards = document.querySelectorAll(".card-outer");
-            for (let i =0; i < cards.length; i++) {
-                cards[i].addEventListener("click", storeClickedImages)
-            }
-            compareClickedImages()
-        }, 2000);
-    }
-
-}
-
 function correctMatch(selectedImages) {
     for (i = 0; i < selectedImages.length; i++) {
+        correctMatchCount++;
+        console.log(correctMatchCount);
         selectedImages[i].classList.add("matched");
     }
+    gameOver();
 }
 
 function wrongMatch() {
     // subtract points?
+}
+
+function gameOver() {
+    if (correctMatchCount === divNumber) {
+        alert("YOU WIN!!!")
+    }
+    gameReset();
+}
+
+function gameReset() {
+
 }
 
 generateColumns(divNumber);
