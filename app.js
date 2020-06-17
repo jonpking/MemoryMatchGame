@@ -19,6 +19,8 @@
 //     /-game over screen when all cards are matched
 //     /-scoring system?
 
+// add search option getting gifs from api
+// add option to use random endpoint for getting gifs from api
 //refactor reset function
 // difficulty adjustments?
 
