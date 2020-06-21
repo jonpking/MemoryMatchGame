@@ -18,7 +18,7 @@
 //             /-remove if yes
 //             /-flip back over if no
 //     /-game over screen when all cards are matched
-//          -model for game over
+//          -modal for game over
 //     /-scoring system?
 
 const cardImageArr = []
