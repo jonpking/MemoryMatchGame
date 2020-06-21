@@ -1,26 +1,3 @@
-// todo:
-
-//     -page layout
-//         /-basic
-//         /-extras
-//     -css
-//         /-basic
-//         /-extras
-//     /-create memory cards
-//     /-create pictures/objects/etc to match
-//         /-pull from api?
-//          -pull from random api vs search?
-//     -difficulty levels?
-//         -change grid size?
-//         -change match number(match 2, 3, etc)?
-//     /-make cards flip/fade/animate/etc when clicked
-//         /-check if cards match after two are flipped
-//             /-remove if yes
-//             /-flip back over if no
-//     /-game over screen when all cards are matched
-//          -modal for game over
-//     /-scoring system?
-
 const cardImageArr = []
 let clickedImage1 = ""
 let clickedImage2 = ""
