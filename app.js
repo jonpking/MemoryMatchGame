@@ -2,13 +2,14 @@
 
 //     -page layout
 //         /-basic
-//         -extras
+//         /-extras
 //     -css
 //         /-basic
-//         -extras
+//         /-extras
 //     /-create memory cards
 //     /-create pictures/objects/etc to match
 //         /-pull from api?
+//          -pull from random api vs search?
 //     -difficulty levels?
 //         -change grid size?
 //         -change match number(match 2, 3, etc)?
@@ -18,10 +19,6 @@
 //             /-flip back over if no
 //     /-game over screen when all cards are matched
 //     /-scoring system?
-
-// add search option getting gifs from api
-// add option to use random endpoint for getting gifs from api
-// difficulty adjustments?
 
 const cardImageArr = []
 let clickedImage1 = ""
