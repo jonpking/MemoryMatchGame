@@ -3,8 +3,8 @@ let clickedImage1 = ""
 let clickedImage2 = ""
 let divNumber = 16
 let correctMatchCount = 0
-let searchTerm = "bacon"
-let difficulty = "easy"
+let searchParams = new URLSearchParams(window.location.search);
+let searchTerm = searchParams.get("term") || "bacon";
 let score = 0
 
 function generateColumns(divNumber) {
@@ -18,17 +18,6 @@ function generateColumns(divNumber) {
         cardFrontDiv.className = "card-front";
         const cardBackDiv = document.createElement("div");
         cardBackDiv.className = "card-back";
-        switch (difficulty) {
-            case "easy":
-                cardOuterDiv.classList.add("easy");
-                break;
-            case "medium":
-                cardOuterDiv.classList.add("medium");
-                break;
-            case "hard":
-                cardOuterDiv.classList.add("hard");
-                break;
-        }
         cardInnerDiv.appendChild(cardBackDiv);
         cardInnerDiv.appendChild(cardFrontDiv);
         cardOuterDiv.addEventListener("click", storeClickedImages);
@@ -65,20 +54,6 @@ function displayImages() {
         const cardImage = document.createElement("img");
         cardImage.setAttribute("src", cardImageArr[i]);
         cards[i].append(cardImage);
-        switch (difficulty) {
-            case "easy":
-                cardImage.width = "130";
-                cardImage.height = "130";
-                break;
-            case "medium":
-                cardImage.width = "90";
-                cardImage.height = "90";
-                break;
-            case "hard":
-                cardImage.width = "75";
-                cardImage.height = "75";
-                break;
-        }
     }
 }
 
@@ -165,5 +140,8 @@ function updateScore() {
     document.querySelector("#score").textContent = score;
 }
 
+window.addEventListener("load", function () {
+    document.getElementById("searchTermInput").value = searchTerm;
+})
 generateColumns(divNumber);
 getImages();
