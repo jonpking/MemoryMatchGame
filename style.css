@@ -1,5 +1,5 @@
 body {
-  background-color: #F5F5F5;
+  background-color: #e1f5fe;
 }
 
 h1 {
@@ -8,16 +8,16 @@ h1 {
   font-family: 'Permanent Marker', cursive;
   font-size: 2.5rem;
   letter-spacing: 5px;
-  color: #b69bec;
+  color: #d1c4e9;
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #8a56f1;
+  -webkit-text-stroke-color: #7c4dff;
   text-shadow: 0px 0px 5px #7842e6, 0px 0px 10px #925feb, 0px 0px 15px #ac7dec;
 }
 
 h2 {
   margin: 0;
   font-family: 'Patrick Hand', cursive;
-  color: #4a5568;
+  color: #1a202c;
   letter-spacing: 3px;
   font-size: 2rem;
   line-height: 1;
@@ -32,9 +32,27 @@ h2 {
   align-items: center;
 }
 
+form {
+  display: flex;
+  align-items: center;
+}
+
+input {
+  margin: 8px 2px 0 2px;
+  width: 100px;
+  padding: 1.5px;
+  box-sizing: border-box;
+  border-radius: 3px;
+}
+
+#submitBtn:hover {
+  color: rgb(236, 229, 229);
+  background-color: #fc8181;
+}
+
 label {
   font-family: 'Patrick Hand', cursive;
-  color: #4a5568;
+  color: #1a202c;
   letter-spacing: 3px;
   font-size: 2rem;
   line-height: 1;
@@ -57,10 +75,10 @@ img {
   padding: 15px;
   width: 1000px;
   background-color: #2f855a;
-  border: solid brown 10px;
-  border-style: ;
-  box-shadow: 0px 0px 5px 1px #26547C;
-  /* border-radius: 15px; */
+  border: solid #7b341e 10px;
+  box-shadow: 0px 0px 5px 2px #26547C;
+  border-radius: 7px;
+  border-style: ridge;
 }
 
 .matched {
