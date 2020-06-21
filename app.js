@@ -21,7 +21,6 @@
 
 // add search option getting gifs from api
 // add option to use random endpoint for getting gifs from api
-//refactor reset function
 // difficulty adjustments?
 
 const cardImageArr = []
@@ -44,26 +43,17 @@ function generateColumns(divNumber) {
         cardFrontDiv.className = "card-front";
         const cardBackDiv = document.createElement("div");
         cardBackDiv.className = "card-back";
-        const cardBackImg = document.createElement("img");
-        cardBackImg.setAttribute("src", "images/card-back.jpg")
         switch (difficulty) {
             case "easy":
                 cardOuterDiv.classList.add("easy");
-                cardBackImg.width = "130"
-                cardBackImg.height = "130"
                 break;
             case "medium":
                 cardOuterDiv.classList.add("medium");
-                cardBackImg.width = "90"
-                cardBackImg.height = "90"
                 break;
             case "hard":
                 cardOuterDiv.classList.add("hard");
-                cardBackImg.width = "75"
-                cardBackImg.height = "75"
                 break;
         }
-        cardBackDiv.appendChild(cardBackImg);
         cardInnerDiv.appendChild(cardBackDiv);
         cardInnerDiv.appendChild(cardFrontDiv);
         cardOuterDiv.addEventListener("click", storeClickedImages);
