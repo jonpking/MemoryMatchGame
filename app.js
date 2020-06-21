@@ -82,7 +82,6 @@ function storeClickedImages() {
             for (let i = 0; i < cards.length; i++) {
                 cards[i].addEventListener("click", storeClickedImages)
             }
-            console.log(correctMatchCount);
             compareClickedImages()
         }, 2000);
     }
@@ -113,7 +112,6 @@ function compareClickedImages() {
 function correctMatch(selectedImages) {
     for (i = 0; i < selectedImages.length; i++) {
         correctMatchCount++;
-        console.log(correctMatchCount);
         selectedImages[i].classList.add("matched");
     }
     score += 10;
