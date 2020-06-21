@@ -8,10 +8,6 @@ h2 {
   margin: 5px 0;
 }
 
-text {
-  border: 10;
-}
-
 #gameArea {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -66,10 +62,14 @@ text {
   background-color: #bbb;
   color: black;
   transform: rotateY(180deg);
+  border: solid black 1px;
+  box-shadow: 1px 3px 4px -1px black;
 }
 
 /* Style the back side */
 .card-back {
-  background-color: dodgerblue;
-  color: white;
+  color: #fff;
+  background: repeating-linear-gradient(-45deg, #a1d8f4 0, #a1d8f4 25%, #8ccae9 0, #8ccae9 38%) 0 / 20px 20px;
+  border: solid black 1px;
+  box-shadow: 1px 3px 4px -1px black;
 }
